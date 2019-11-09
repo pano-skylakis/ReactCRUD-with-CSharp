@@ -9,37 +9,37 @@ namespace ReactCRUD.Pages
 {
     public class EmployeeDataAccessLayer
     {
-        /*myTestDBContext db = new myTestDBContext();
+        masterContext db = new masterContext();
 
-        public IEnumerable<TblEmployee> GetAllEmployees()
+        public IEnumerable<Tblemployee> GetAllEmployees()
         {
-            return db.TblEmployee.ToList();
+            return db.Tblemployee.ToList();
         }
 
-        public int AddEmployee(TblEmployee employee)
+        public int AddEmployee(Tblemployee employee)
         {
-            db.TblEmployee.Add(employee);
+            db.Tblemployee.Add(employee);
             db.SaveChanges();
             return 1;
         }
 
-        public int UpdateEmployee(TblEmployee employee)
+        public int UpdateEmployee(Tblemployee employee)
         {
             db.Entry(employee).State = EntityState.Modified;
             db.SaveChanges();
             return 1;
         }
 
-        public TblEmployee GetEmployeeData(int id)
+        public Tblemployee GetEmployeeData(int id)
         {
-            TblEmployee employee = db.TblEmployee.Find(id);
+            Tblemployee employee = db.Tblemployee.Find(id);
             return employee;
         }
 
         public int DeleteEmployee(int id)
         {
-            TblEmployee employee = db.TblEmployee.Find(id);
-            db.TblEmployee.Remove(employee);
+            Tblemployee employee = db.Tblemployee.Find(id);
+            db.Tblemployee.Remove(employee);
             db.SaveChanges();
             return 1;
         }
@@ -49,6 +49,6 @@ namespace ReactCRUD.Pages
             List<TblCities> lstCity = new List<TblCities>();
             lstCity = (from CityList in db.TblCities select CityList).ToList();
             return lstCity;
-        }*/
+        }
     }
 }
