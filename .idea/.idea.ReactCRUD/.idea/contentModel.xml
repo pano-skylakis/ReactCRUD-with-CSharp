@@ -1,6 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="C:\Users\pano_\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\pano_\.Rider2019.2\config\extensions" t="IncludeRecursive" />
     <e p="C:\Users\pano_\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\pano_\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_ReactCRUD.-2133986052.00" t="ExcludeRecursive" />
     <e p="D:\c#\ReactCrud" t="IncludeFlat">
@@ -87,6 +89,7 @@
           </e>
         </e>
         <e p="Controllers" t="Include">
+          <e p="EmployeeController.cs" t="Include" />
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -98,8 +101,12 @@
         </e>
         <e p="Pages" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
+          <e p="EmployeeDataAccessLayer.cs" t="Include" />
           <e p="Error.cshtml" t="Include" />
           <e p="Error.cshtml.cs" t="Include" />
+          <e p="masterContext.cs" t="Include" />
+          <e p="TblCities.cs" t="Include" />
+          <e p="Tblemployee.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
