@@ -41,7 +41,7 @@ namespace ReactCRUD.Controllers
         }
         
         [HttpDelete]
-        [Route("api/Employee/Delete/{id}")]
+        [Route("api/Employee/Delete/{employeeId}")]
         public int Delete(int employeeId)
         {
             return _objemployee.DeleteEmployee(employeeId);

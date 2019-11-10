@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
+import React from 'react';
+import { Route } from 'react-router-dom'
 import { Layout } from './components/Layout';
-import {FetchEmployee, Home} from './components/FetchEmployee';
+import { FetchEmployee } from './components/FetchEmployee';
 import { Counter } from './components/Counter';
 
 import './custom.css'
+import {AddEmployee} from "./components/AddEmployee";
 
-export default class App extends Component {
+export default class App extends React.Component {
   static displayName = App.name;
 
   render () {
@@ -14,6 +15,7 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={FetchEmployee} />
         <Route path='/counter' component={Counter} />
+        <Route path='/addemployee' component={AddEmployee} />
       </Layout>
     );
   }

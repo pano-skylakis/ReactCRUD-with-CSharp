@@ -1,6 +1,6 @@
 ﻿import React from 'react'
-import { RouteComponentProps } from 'react-router'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import {deleteEmployeeApi, getEmployeeListApi} from "../api/employeeApi";
 
 export class FetchEmployee extends React.Component {
     constructor(props) {
@@ -11,20 +11,27 @@ export class FetchEmployee extends React.Component {
             loading: true
         };
         
-        fetch('api/Employee/Index')
+        /*fetch('api/Employee/Index')
             .then(res => res.json())
             .then(data => {
-                this.setState({empList: data, loading: false});
-            })
+                empListthis.setState({empList: data, loading: false});
+            })*/
     }
     
+    componentDidMount() {
+        getEmployeeListApi()
+            .then(res => {
+                this.setState({empList: res, loading: false })
+            })
+    }
+
     handleDelete = id => {
-        fetch(`api/Employee/Delete/${id}`, {
-            method: 'delete'
-        }).then(data => {
-            this.setState({
-                empList: this.state.empList.filter(rec => {
-                    return (rec.employeeId !== id)
+        deleteEmployeeApi(id)
+            .then(data => {
+                console.log('jsx: ' + data)
+                this.setState({
+                    empList: this.state.empList.filter(rec => {
+                        return (rec.employeeId !== id)
                 })
             })
         })
@@ -65,12 +72,16 @@ export class FetchEmployee extends React.Component {
                     </thead>
                     <tbody>
                     {this.state.empList.map(emp => 
-                        <tr key={emp.EmployeeId}>
+                        <tr key={emp.employeeId}>
                             <td>{emp.employeeId}</td>
                             <td>{emp.name}</td>
                             <td>{emp.gender}</td>
                             <td>{emp.department}</td>
                             <td>{emp.city}</td>
+                            <td>
+                                <a className="action" onClick={(id) => this.handleEdit(emp.employeeId)}>Edit</a>  |
+                                <a className="action" onClick={(id) => this.handleDelete(emp.employeeId)}>Delete</a>
+                            </td>
                         </tr>
                     )}
                     </tbody>

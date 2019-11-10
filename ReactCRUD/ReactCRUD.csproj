@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="ClientApp\src\api\employeeApi.js" />
       <Content Include="ClientApp\src\components\AddEmployee.jsx" />
       <Content Include="ClientApp\src\components\FetchEmployee.jsx" />
     </ItemGroup>

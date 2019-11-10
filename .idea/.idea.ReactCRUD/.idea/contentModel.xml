@@ -62,6 +62,7 @@
           <e p="node_modules\realpath-native" t="IncludeRecursive" />
           <e p="node_modules\rimraf" t="IncludeRecursive" />
           <e p="node_modules\source-map" t="IncludeRecursive" />
+          <e p="node_modules\superagent" t="IncludeRecursive" />
           <e p="node_modules\typescript\lib\lib.d.ts" t="IncludeRecursive" />
           <e p="node_modules\typescript\lib\lib.dom.d.ts" t="IncludeRecursive" />
           <e p="node_modules\typescript\lib\lib.dom.iterable.d.ts" t="IncludeRecursive" />
@@ -115,7 +116,6 @@
           <e p="node_modules\typescript\lib\lib.webworker.importscripts.d.ts" t="IncludeRecursive" />
           <e p="node_modules\uri-js" t="IncludeRecursive" />
           <e p="node_modules\worker-farm" t="IncludeRecursive" />
-          <e p="package-lock.json" t="Include" />
           <e p="package.json" t="Include" />
           <e p="public" t="Include">
             <e p="favicon.ico" t="Include" />
@@ -124,16 +124,19 @@
           </e>
           <e p="README.md" t="Include" />
           <e p="src" t="Include">
-            <e p="App.js" t="Include" />
+            <e p="api" t="Include">
+              <e p="employeeApi.js" t="Include" />
+            </e>
+            <e p="App.jsx" t="Include" />
             <e p="App.test.js" t="Include" />
             <e p="components" t="Include">
               <e p="AddEmployee.jsx" t="Include" />
-              <e p="Counter.js" t="Include" />
+              <e p="Counter.jsx" t="Include" />
               <e p="FetchEmployee.jsx" t="Include" />
-              <e p="Home.js" t="Include" />
-              <e p="Layout.js" t="Include" />
+              <e p="Home.jsx" t="Include" />
+              <e p="Layout.jsx" t="Include" />
               <e p="NavMenu.css" t="Include" />
-              <e p="NavMenu.js" t="Include" />
+              <e p="NavMenu.jsx" t="Include" />
             </e>
             <e p="custom.css" t="Include" />
             <e p="index.js" t="Include" />
