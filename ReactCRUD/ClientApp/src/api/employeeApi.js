@@ -10,6 +10,12 @@ export function getEmployeeByIdApi(id) {
         .then(res => res.body)
 }
 
+export function editEmployeeApi(employeeData) {
+    return request.put('api/Employee/Edit')
+        .send(employeeData)
+        .then(res => res.body)
+}
+
 export function addEmployeeApi(employeeData) {
     return request.post('api/Employee/Create')
         .send(employeeData)

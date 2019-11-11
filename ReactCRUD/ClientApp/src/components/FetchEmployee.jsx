@@ -39,6 +39,7 @@ export class FetchEmployee extends React.Component {
     
     handleEdit = id => {
         this.props.history.push(`/employee/edit/${id}`);
+        
     };
     
     render() {

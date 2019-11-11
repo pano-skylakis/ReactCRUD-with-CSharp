@@ -16,6 +16,7 @@ export default class App extends React.Component {
         <Route exact path='/' component={FetchEmployee} />
         <Route path='/counter' component={Counter} />
         <Route path='/addemployee' component={AddEmployee} />
+        <Route path='/employee/edit/:empid' component={AddEmployee} />
       </Layout>
     );
   }
