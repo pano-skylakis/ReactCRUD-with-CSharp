@@ -18,9 +18,9 @@ export function editEmployeeApi(employeeData) {
 }
 
 export function addEmployeeApi(employeeData) {
-    return request.post('api/Employee/Create')
-        .send(employeeData)
-        .then(res => res.ok)
+        return request.post('api/Employee/Create')
+            .send(employeeData)
+            .then(res => res.ok)
 }
 
 export function getCityListApi() {

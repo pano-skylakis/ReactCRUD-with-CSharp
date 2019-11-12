@@ -69,7 +69,7 @@ export class AddEmployee extends React.Component {
                 .then(this.setState({ redirect: true }))
         } else {
             addEmployeeApi(this.state.empData)
-                .then(this.setState( { redirect: true }))
+                .then(this.setState({redirect: false}))
         }
     };
     
