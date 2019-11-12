@@ -26,7 +26,6 @@ export class FetchEmployee extends React.Component {
     handleDelete = id => {
         deleteEmployeeApi(id)
             .then(data => {
-                console.log('jsx: ' + data);
                 this.setState({
                     empList: this.state.empList.filter(rec => {
                         return (rec.employeeId !== id)

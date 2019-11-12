@@ -39,7 +39,6 @@ namespace ReactCRUD.Pages
         public int DeleteEmployee(int id)
         {
             Tblemployee employee = db.Tblemployee.Find(id);
-            Console.WriteLine(employee);
             db.Tblemployee.Remove(employee);
             db.SaveChanges();
             return 1;
