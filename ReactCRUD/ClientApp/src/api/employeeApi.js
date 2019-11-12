@@ -11,6 +11,7 @@ export function getEmployeeByIdApi(id) {
 }
 
 export function editEmployeeApi(employeeData) {
+    console.log(employeeData)
     return request.put('api/Employee/Edit')
         .send(employeeData)
         .then(res => res.ok)
@@ -18,9 +19,10 @@ export function editEmployeeApi(employeeData) {
 }
 
 export function addEmployeeApi(employeeData) {
+    console.log(employeeData)
     return request.post('api/Employee/Create')
         .send(employeeData)
-        .then(res => res.body)
+        .then(res => res.ok)
 }
 
 export function getCityListApi() {

@@ -28,7 +28,7 @@ namespace ReactCRUD.Controllers
         
         [HttpPost]
         [Route("api/Employee/Create")]
-        public int Create(Tblemployee employee)
+        public int Create([FromBody] Tblemployee employee)
         {
             return _objemployee.AddEmployee(employee);
         }

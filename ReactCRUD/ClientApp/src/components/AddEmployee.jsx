@@ -1,5 +1,5 @@
 import React from 'react'
-import {editEmployeeApi, getCityListApi, getEmployeeByIdApi} from "../api/employeeApi";
+import {addEmployeeApi, editEmployeeApi, getCityListApi, getEmployeeByIdApi} from "../api/employeeApi";
 import Redirect from "react-router-dom/Redirect";
 
 export class AddEmployee extends React.Component {
@@ -10,48 +10,67 @@ export class AddEmployee extends React.Component {
             title: '',
             loading: true,
             cityList: [],
-            empData: [],
+            empData: {
+                name: '',
+                gender: '',
+                department: '',
+                city: ''
+            },
             redirect: false
         };
-        
+    }
+    
+    componentDidMount() { 
+        this.editEmployeeCheck();
+        this.getCityListSetToState()
+    }
+    
+    createNewEmployeeInitialState = () => {
+        this.setState({ title: "Create", loading: false })
+    };
+    
+    getCityListSetToState = () => {
+        getCityListApi()
+            .then(res => {
+                this.setState({ cityList: res })
+            })
+    };
+    
+    editEmployeeCheck = () => {
         let empId = this.props.match.params["empid"];
-        if (empId > 0) {
+        if (empId > 0 || empId !== undefined) {
             getEmployeeByIdApi(empId)
                 .then(res => {
                     this.setState({ title: 'Edit', empData: res, loading: false })
                 })
         } else {
-            this.state = { title: "Create", loading: false, cityList: [], empData: [] } 
+            this.createNewEmployeeInitialState();
         }
     }
     
-    componentDidMount() {
-        getCityListApi()
-            .then(res => {
-                this.setState({ cityList: res })
-            })
-    }
-    
     handleChange = e => {
-        const stateMap = () => {
-            if(this.state.empData.hasOwnProperty(e.target.name)) {
-                Object.keys(this.state.empData).map(i => {
-                    if (i === e.target.name) {
-                       return this.state.empData[i] = e.target.value
-                    } else {
-                       return this.state.empData[i] = this.state.empData[i]
-                    }
-                });
-                return this.state.empData
-            }
+        const EmployeeStateMap = () => {
+            Object.keys(this.state.empData).map(i => {
+                if (i === e.target.name) {
+                   return this.state.empData[i] = e.target.value
+                } else {
+                   return this.state.empData[i] = this.state.empData[i]
+                }
+            });
+            return this.state.empData
         };
-        this.setState(stateMap());
+        this.setState(EmployeeStateMap());
     };
     
     handleSave = e => {
         e.preventDefault();
-        editEmployeeApi(this.state.empData)
-            .then(this.setState({ redirect: true }))
+        if(this.state.empData.employeeId) {
+            editEmployeeApi(this.state.empData)
+                .then(this.setState({ redirect: true }))
+        } else {
+            addEmployeeApi(this.state.empData)
+                .then(this.setState( { redirect: true }))
+        }
     };
     
     handleCancel = () => {
@@ -62,7 +81,7 @@ export class AddEmployee extends React.Component {
         return (
             <form onSubmit={this.handleSave}>
                 <div className="form-group row" >
-                    <input type="hidden" name="employeeId" value={this.state.empData.employeeId} />
+                    <input type="hidden" name="employeeId" value={this.state.empData.hasOwnProperty('employeeId') ? this.state.employeeId : null} />
                 </div>
                 < div className="form-group row" >
                     <label className=" control-label col-md-12" htmlFor="Name">Name</label>
