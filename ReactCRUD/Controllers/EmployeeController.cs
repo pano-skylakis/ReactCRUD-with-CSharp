@@ -35,7 +35,7 @@ namespace ReactCRUD.Controllers
 
         [HttpPut]
         [Route("api/Employee/Edit")]
-        public int Update(Tblemployee employee)
+        public int Update([FromBody] Tblemployee employee)
         {
             return _objemployee.UpdateEmployee(employee);
         }

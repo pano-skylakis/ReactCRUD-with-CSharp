@@ -13,7 +13,8 @@ export function getEmployeeByIdApi(id) {
 export function editEmployeeApi(employeeData) {
     return request.put('api/Employee/Edit')
         .send(employeeData)
-        .then(res => res.body)
+        .then(res => res.ok)
+        .catch(err => err.badRequest)
 }
 
 export function addEmployeeApi(employeeData) {
@@ -28,12 +29,8 @@ export function getCityListApi() {
 }
 
 export function deleteEmployeeApi(id) {
-    console.log(id)
     return request.delete(`api/Employee/Delete/${id}`)
-        .then(res => {
-            console.log(res.body)
-            return res.body
-        })
-        .catch(err => err)
+        .then(res => res.ok)
+        .catch(err => err.badRequest)
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import {editEmployeeApi, getCityListApi, getEmployeeByIdApi} from "../api/employeeApi";
+import Redirect from "react-router-dom/Redirect";
 
 export class AddEmployee extends React.Component {
     constructor(props) {
@@ -9,12 +10,13 @@ export class AddEmployee extends React.Component {
             title: '',
             loading: true,
             cityList: [],
-            empData: []
+            empData: [],
+            redirect: false
         };
         
-        let empid = this.props.match.params["empid"];
-        if (empid > 0) {
-            getEmployeeByIdApi(empid)
+        let empId = this.props.match.params["empid"];
+        if (empId > 0) {
+            getEmployeeByIdApi(empId)
                 .then(res => {
                     this.setState({ title: 'Edit', empData: res, loading: false })
                 })
@@ -49,7 +51,7 @@ export class AddEmployee extends React.Component {
     handleSave = e => {
         e.preventDefault();
         editEmployeeApi(this.state.empData)
-            .then(this.props.history.push('/'))
+            .then(this.setState({ redirect: true }))
     };
     
     handleCancel = () => {
@@ -108,6 +110,7 @@ export class AddEmployee extends React.Component {
         let contents = this.state.loading ? <p><em>Loading...</em></p> : this.renderCreateForm(this.state.cityList);
         return (
             <React.Fragment>
+                {this.state.redirect ? <Redirect to={"/"} /> : <React.Fragment/>}
                 <h1>{this.state.title}</h1>
                 <h3>Employee</h3>
                 <hr />

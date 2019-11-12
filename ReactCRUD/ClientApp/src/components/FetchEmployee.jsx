@@ -10,25 +10,23 @@ export class FetchEmployee extends React.Component {
             empList: [], 
             loading: true
         };
-        
-        /*fetch('api/Employee/Index')
-            .then(res => res.json())
-            .then(data => {
-                empListthis.setState({empList: data, loading: false});
-            })*/
     }
     
     componentDidMount() {
+        this.refreshList()
+    }
+    
+    refreshList = () => {
         getEmployeeListApi()
             .then(res => {
-                this.setState({empList: res, loading: false })
+                this.setState({ empList: res, loading: false })
             })
-    }
+    };
 
     handleDelete = id => {
         deleteEmployeeApi(id)
             .then(data => {
-                console.log('jsx: ' + data)
+                console.log('jsx: ' + data);
                 this.setState({
                     empList: this.state.empList.filter(rec => {
                         return (rec.employeeId !== id)
@@ -39,7 +37,6 @@ export class FetchEmployee extends React.Component {
     
     handleEdit = id => {
         this.props.history.push(`/employee/edit/${id}`);
-        
     };
     
     render() {
